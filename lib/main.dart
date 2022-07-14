@@ -14,9 +14,16 @@ class MyApp extends StatelessWidget {
             children: <Widget>[
               Text("Why do men sleep after Sex"),
               Text("Ans: No time for bullshit"),
-              FloatingActionButton(onPressed: () {
-                Text("Click");
-              })
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FloatingActionButton(onPressed: null,
+                  child: Icon(Icons.arrow_circle_left_rounded),
+                  ),
+                  FloatingActionButton(onPressed: null,
+                  child: Icon(Icons.arrow_circle_right_rounded),
+                  ),
+              ],)
             ],
           )),
         )),
