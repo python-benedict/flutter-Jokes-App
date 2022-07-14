@@ -4,62 +4,107 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  var jokes = [
+    {
+      'Question': 'What does a baby computer call its father?"',
+      'Answer': 'Data'
+    },
+    {
+      'Question': "What's a pencil with two erasers called?",
+      'Answer': 'Pencil'
+    },
+    {
+      'Question': 'Why is the calendar always scared?',
+      'Answer': 'Because its days are numbered'
+    },
+    {'Question': 'What do you call a fish with no eye', 'Answer': 'Fsh'},
+  ];
+
+  var jokesIndex = 0;
+
+  changeJokesIndex(String direction) {
+    if (direction == 'next') {
+      setState(() {
+        jokesIndex++;
+      });
+    } else if (direction == 'prev') {
+      setState(() {
+        jokesIndex--;
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(
+        body: (Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                 child: Text(
-                  "Which church will lead mankind to heaven?",
+                  jokes[jokesIndex]["Question"] as String,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.brown,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
+                ),
               ),
-              ),
-
-
               Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 0, 40),
-                child: Text("Ans: Church Of Christ",
-                style: TextStyle(
-                  color: Colors.orange,
-                ),
+                margin: EdgeInsets.fromLTRB(0, 0, 20, 60),
+                child: Text(
+                  jokes[jokesIndex]["Answer"] as String,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-
-              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 0, 30, 0),
-                    child: FloatingActionButton(onPressed: null,
+                  FloatingActionButton(
+                    onPressed: () {
+                      changeJokesIndex("prev");
+                    },
                     child: Icon(
                       Icons.arrow_circle_left_rounded,
                       size: 30,
-                      ),
+                    ),
                     backgroundColor: Colors.orange,
                   ),
-                  ),
-                  FloatingActionButton(onPressed: null,
-                    child: Icon(
-                      Icons.arrow_circle_right_rounded,
-                      size: 30,
+                  Container(
+                    margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        changeJokesIndex("next");
+                      },
+                      child: Icon(
+                        Icons.arrow_circle_right_rounded,
+                        size: 30,
                       ),
-                  ),
+                      backgroundColor: Colors.black,
+                    ),
+                  )
                 ],
               )
             ],
           ),
-        ),
+        )),
       ),
     );
   }
