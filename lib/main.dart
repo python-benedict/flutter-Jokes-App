@@ -14,6 +14,9 @@ class MyApp extends StatelessWidget {
             children: <Widget>[
               Text("Why do men sleep after Sex"),
               Text("Ans: No time for bullshit"),
+              FloatingActionButton(onPressed: () {
+                Text("Click");
+              })
             ],
           )),
         )),
