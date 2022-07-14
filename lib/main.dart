@@ -33,13 +33,25 @@ class MyAppState extends State<MyApp> {
 
   changeJokesIndex(String direction) {
     if (direction == 'next') {
-      setState(() {
+      if(jokesIndex != jokes.length -1){
+        setState(() {
         jokesIndex++;
       });
+      }else{
+        setState(() {
+        jokesIndex =jokesIndex=0;
+      });
+      }
     } else if (direction == 'prev') {
-      setState(() {
+      if(jokesIndex != 0){
+        setState(() {
         jokesIndex--;
       });
+      }else{
+        setState(() {
+        jokesIndex = jokes.length-1;
+      });
+      }
     }
   }
 
