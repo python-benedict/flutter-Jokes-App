@@ -8,7 +8,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("what do you call a lady with small Ass"),
+              Text("Ans: Virgin"),
+            ]),
+        ),
       ),
     );
   }
